@@ -4,7 +4,7 @@ const userController = require('../controllers/userController');
 const verifyToken = require('../middleware/verifyToken');
 
 // Middleware para verificar el token en todas las rutas de usuario
-router.use(verifyToken);
+//router.use(verifyToken);
 
 // Rutas para usuarios
 
