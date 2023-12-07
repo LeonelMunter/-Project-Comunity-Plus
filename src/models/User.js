@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const validator = require('validator')
 // Definir el esquema para el modelo de Usuario
 const userSchema = new mongoose.Schema({
 name:{

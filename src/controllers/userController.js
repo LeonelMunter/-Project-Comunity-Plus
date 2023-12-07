@@ -31,7 +31,6 @@ const getUserByID = async (req, res) => {
 // Crear un nuevo usuario
 const createUser = async (req, res) => {
   const { name, surname, age, nacionality, phone, province, city, email, technologies, username, password } = req.body;
-
   try {
     const newUser = new User({  name, surname, age, nacionality, phone, province, city, email, technologies, username, password });
     await newUser.save();

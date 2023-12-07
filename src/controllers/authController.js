@@ -3,10 +3,10 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
 const register = async (req, res) => {
-  const { username, password } = req.body;
+  const {name, surname, age, nacionality, phone, province, city, email, password} = req.body;
 
   try {
-    const userExists = await User.findOne({ username });
+    const userExists = await User.findOne({ email });
 
     if (userExists) {
       return res.status(400).json({ message: 'El usuario ya está registrado' });
@@ -14,7 +14,7 @@ const register = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = new User({ username, password: hashedPassword });
+    const newUser = new User({ name, surname, age, nacionality, phone, province, city, email, password: hashedPassword });
     await newUser.save();
 
     const token = jwt.sign({ username: newUser.username }, 'your_secret_key', { expiresIn: '1h' });
@@ -27,10 +27,10 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ email });
 
     if (!user) {
       return res.status(404).json({ message: 'Usuario no encontrado' });
