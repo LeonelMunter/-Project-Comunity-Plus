@@ -64,12 +64,7 @@ profilePic: {
       throw new ClientError('La url es incorrecta.', 400);
     }
   },
-},
-timestamps: {
-    createdAt: 'created_at', // Use `created_at` to store the created date
-    updatedAt: 'updated_at', // and `updated_at` to store the last updated date
-  },
-
+}
 
 });
 

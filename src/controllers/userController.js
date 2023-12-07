@@ -30,10 +30,10 @@ const getUserByID = async (req, res) => {
 
 // Crear un nuevo usuario
 const createUser = async (req, res) => {
-  const { username, email } = req.body;
+  const { name, surname, age, nacionality, phone, province, city, email, technologies, username, password } = req.body;
 
   try {
-    const newUser = new User({ username, email });
+    const newUser = new User({  name, surname, age, nacionality, phone, province, city, email, technologies, username, password });
     await newUser.save();
     res.status(201).json({ message: 'Usuario creado exitosamente', newUser });
   } catch (error) {
